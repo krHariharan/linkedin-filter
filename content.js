@@ -3,9 +3,36 @@ console.log('LinkedIn Filter - Content script loaded');
 let preferences = {
     jobsEnabled: true,
     researchEnabled: true,
-    businessEnabled: true
+    businessEnabled: true,
+    clickbaitEnabled: true
   };
   
+  const DEFAULT_KEYWORDS = {
+    job: [
+      'hiring', 'job opening', 'position', 'career', 'opportunity', 'role', 
+      'looking for', 'join our team', 'apply now', 'job post', 'vacancy',
+      'recruiting', 'recruitment', 'job description', 'responsibilities',
+      'qualifications', 'requirements', 'salary', 'remote work', 'hybrid'
+    ],
+    research: [
+      'research', 'study', 'publication', 'paper', 'findings', 'analysis',
+      'investigation', 'experiment', 'data', 'methodology', 'results',
+      'collaboration', 'grant', 'funding', 'fellowship', 'PhD', 'postdoc',
+      'laboratory', 'innovation', 'discovery', 'academic'
+    ],
+    business: [
+      'partnership', 'investment', 'startup', 'venture', 'business opportunity',
+      'collaboration', 'seeking', 'funding', 'investors', 'growth',
+      'scale', 'market', 'revenue', 'clients', 'customers', 'b2b',
+      'services', 'solution', 'product launch', 'expansion'
+    ],
+    clickbait: [
+      'shocking', 'this will blow your mind', 'viral', 'watch till the end', 'breaking news',
+      'mind-blowing', 'crazy', 'jaw-dropping', 'what do you think', 'what are your thoughts',
+      'my thoughts', 'lesson', 'what i learnt', 'what i learned', 'lessons'
+    ]
+  };
+
   let keywords = DEFAULT_KEYWORDS;
   let filterCount = 0;
 
@@ -14,7 +41,8 @@ function classifyPost(postText) {
   const classifications = {
     isJob: false,
     isResearch: false,
-    isBusiness: false
+    isBusiness: false,
+    isClickbait: false
   };
   
   classifications.isJob = keywords.job.some(keyword => 
@@ -28,12 +56,19 @@ function classifyPost(postText) {
   classifications.isBusiness = keywords.business.some(keyword => 
     postText.includes(keyword.toLowerCase())
   );
+
+  classifications.isClickbait = keywords.clickbait.some(keyword => 
+    postText.includes(keyword.toLowerCase())
+  );
   
   console.log('LinkedIn Filter - Classified post:', classifications);
   return classifications;
 }
   
 function shouldShowPost(classifications) {
+    if (preferences.clickbaitEnabled && classifications.isClickbait) {
+        return false; // Hide clickbait posts
+    }
     return (
       (preferences.jobsEnabled && classifications.isJob) ||
       (preferences.researchEnabled && classifications.isResearch) ||
