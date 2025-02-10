@@ -16,6 +16,11 @@ const DEFAULT_KEYWORDS = {
       'collaboration', 'seeking', 'funding', 'investors', 'growth',
       'scale', 'market', 'revenue', 'clients', 'customers', 'b2b',
       'services', 'solution', 'product launch', 'expansion'
+    ],
+    clickbait: [
+      'shocking', 'this will blow your mind', 'viral', 'watch till the end', 'breaking news',
+      'mind-blowing', 'crazy', 'jaw-dropping', 'what do you think', 'what are your thoughts',
+      'my thoughts'
     ]
   };
 
@@ -39,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const prefs = result.preferences || {
         jobsEnabled: true,
         researchEnabled: true,
-        businessEnabled: true
+        businessEnabled: true,
+        clickbaitEnabled: true
       };
       
       const keywords = result.keywords || DEFAULT_KEYWORDS;
@@ -48,11 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('jobsEnabled').checked = prefs.jobsEnabled;
       document.getElementById('researchEnabled').checked = prefs.researchEnabled;
       document.getElementById('businessEnabled').checked = prefs.businessEnabled;
+      document.getElementById('businessEnabled').checked = prefs.clickbaitEnabled;
       
       // Set keywords
       document.getElementById('jobKeywords').value = keywords.job.join('\n');
       document.getElementById('researchKeywords').value = keywords.research.join('\n');
       document.getElementById('businessKeywords').value = keywords.business.join('\n');
+      document.getElementById('clickbaitKeywords').value = keywords.clickbait.join('\n');
       
       // Set filter count
       document.getElementById('filterCount').textContent = result.filterCount || 0;
@@ -63,13 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const preferences = {
         jobsEnabled: document.getElementById('jobsEnabled').checked,
         researchEnabled: document.getElementById('researchEnabled').checked,
-        businessEnabled: document.getElementById('businessEnabled').checked
+        businessEnabled: document.getElementById('businessEnabled').checked,
+        clickbaitEnabled: document.getElementById('clickbaitEnabled').checked
       };
       
       const keywords = {
         job: document.getElementById('jobKeywords').value.split('\n').filter(k => k.trim()),
         research: document.getElementById('researchKeywords').value.split('\n').filter(k => k.trim()),
-        business: document.getElementById('businessKeywords').value.split('\n').filter(k => k.trim())
+        business: document.getElementById('businessKeywords').value.split('\n').filter(k => k.trim()),
+        clickbait: document.getElementById('clickbaitKeywords').value.split('\n').filter(k => k.trim())
       };
       
       chrome.storage.sync.set({ preferences, keywords }, () => {
