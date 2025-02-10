@@ -20,7 +20,7 @@ const DEFAULT_KEYWORDS = {
     clickbait: [
       'shocking', 'this will blow your mind', 'viral', 'watch till the end', 'breaking news',
       'mind-blowing', 'crazy', 'jaw-dropping', 'what do you think', 'what are your thoughts',
-      'my thoughts'
+      'my thoughts', 'what i learnt', 'what i learned', 'lesson', 'lessons'
     ]
   };
 
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('jobsEnabled').checked = prefs.jobsEnabled;
       document.getElementById('researchEnabled').checked = prefs.researchEnabled;
       document.getElementById('businessEnabled').checked = prefs.businessEnabled;
-      document.getElementById('businessEnabled').checked = prefs.clickbaitEnabled;
+      document.getElementById('clickbaitEnabled').checked = prefs.clickbaitEnabled;
       
       // Set keywords
       document.getElementById('jobKeywords').value = keywords.job.join('\n');
