@@ -1,25 +1,6 @@
-const DEFAULT_KEYWORDS = {
-    job: [
-      'hiring', 'job opening', 'position', 'career', 'opportunity', 'role', 
-      'looking for', 'join our team', 'apply now', 'job post', 'vacancy',
-      'recruiting', 'recruitment', 'job description', 'responsibilities',
-      'qualifications', 'requirements', 'salary', 'remote work', 'hybrid'
-    ],
-    research: [
-      'research', 'study', 'publication', 'paper', 'findings', 'analysis',
-      'investigation', 'experiment', 'data', 'methodology', 'results',
-      'collaboration', 'grant', 'funding', 'fellowship', 'PhD', 'postdoc',
-      'laboratory', 'innovation', 'discovery', 'academic'
-    ],
-    business: [
-      'partnership', 'investment', 'startup', 'venture', 'business opportunity',
-      'collaboration', 'seeking', 'funding', 'investors', 'growth',
-      'scale', 'market', 'revenue', 'clients', 'customers', 'b2b',
-      'services', 'solution', 'product launch', 'expansion'
-    ]
-  };
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('LinkedIn Filter - Popup script loaded');
   
-  document.addEventListener('DOMContentLoaded', () => {
     // Tab switching
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', () => {
@@ -33,6 +14,7 @@ const DEFAULT_KEYWORDS = {
   
     // Load saved settings
     chrome.storage.sync.get(['preferences', 'keywords', 'filterCount'], (result) => {
+      console.log('LinkedIn Filter - Settings retrieved:', result);
       const prefs = result.preferences || {
         jobsEnabled: true,
         researchEnabled: true,
@@ -70,6 +52,7 @@ const DEFAULT_KEYWORDS = {
       };
       
       chrome.storage.sync.set({ preferences, keywords }, () => {
+        console.log('LinkedIn Filter - Settings saved:', { preferences, keywords });
         alert('Settings saved!');
       });
     });
