@@ -9,27 +9,25 @@ let preferences = {
   
   const DEFAULT_KEYWORDS = {
     job: [
-      'hiring', 'job opening', 'position', 'career', 'opportunity', 'role', 
+      'hiring', 'job opening', 'position', 'opportunity', 'role', 
       'looking for', 'join our team', 'apply now', 'job post', 'vacancy',
       'recruiting', 'recruitment', 'job description', 'responsibilities',
-      'qualifications', 'requirements', 'salary', 'remote work', 'hybrid'
+      'qualifications', 'requirements', 'salary'
     ],
     research: [
-      'research', 'study', 'publication', 'paper', 'findings', 'analysis',
-      'investigation', 'experiment', 'data', 'methodology', 'results',
+      'research', 'study', 'publication', 'paper',
       'collaboration', 'grant', 'funding', 'fellowship', 'PhD', 'postdoc',
-      'laboratory', 'innovation', 'discovery', 'academic'
+      'laboratory', 'innovation', 'academic'
     ],
     business: [
-      'partnership', 'investment', 'startup', 'venture', 'business opportunity',
-      'collaboration', 'seeking', 'funding', 'investors', 'growth',
-      'scale', 'market', 'revenue', 'clients', 'customers', 'b2b',
-      'services', 'solution', 'product launch', 'expansion'
+      'partnership', 'investment', 'startup', 'venture',
+      'collaboration', 'seeking', 'funding', 'investors', 'growth', 'expansion'
     ],
     clickbait: [
       'shocking', 'this will blow your mind', 'viral', 'watch till the end', 'breaking news',
       'mind-blowing', 'crazy', 'jaw-dropping', 'what do you think', 'what are your thoughts',
-      'my thoughts', 'lesson', 'what i learnt', 'what i learned', 'lessons'
+      'my thoughts', 'what i learnt', 'what i learned', 'lesson', 'lessons', 'opinion', 'opinions',
+      'pleased to share', 'happy to share', 'insights', 'takeaways', 'celebrating'
     ]
   };
 
