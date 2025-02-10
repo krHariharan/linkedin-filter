@@ -27,7 +27,8 @@ let preferences = {
       'shocking', 'this will blow your mind', 'viral', 'watch till the end', 'breaking news',
       'mind-blowing', 'crazy', 'jaw-dropping', 'what do you think', 'what are your thoughts',
       'my thoughts', 'what i learnt', 'what i learned', 'lesson', 'lessons', 'opinion', 'opinions',
-      'pleased to share', 'happy to share', 'insights', 'takeaways', 'celebrating'
+      'pleased to share', 'happy to share', 'insights', 'takeaways', 'celebrating', 'telegram', 
+      'what i discovered', 'what i found'
     ]
   };
 
